@@ -1,12 +1,13 @@
 package pl.michalorman.springdata.jpa.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class User {
+public class Applicant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
@@ -15,20 +16,16 @@ public class User {
     @Column
     private String lastName;
 
-    public User() {
-    }
-
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    @OneToMany
+    private List<Competence> competences;
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Applicant{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", competences=" + competences +
                 '}';
     }
 
@@ -54,5 +51,17 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Competence> getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(List<Competence> competences) {
+        this.competences = competences;
+    }
+
+    public void addCompetence(Competence competence) {
+        competences.add(competence);
     }
 }
