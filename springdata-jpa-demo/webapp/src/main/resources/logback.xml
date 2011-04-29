@@ -26,7 +26,7 @@
 
     <!-- Root Logger -->
     <root level="info">
-        <appender-ref ref="stdout-detail" />
+        <appender-ref ref="stdout" />
     </root>
 
 </configuration>

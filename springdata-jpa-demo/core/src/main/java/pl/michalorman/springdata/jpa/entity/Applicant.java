@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Applicant.findWithCompetence",
+                query = "SELECT a FROM Applicant a WHERE ?1 MEMBER OF a.competences")
+})
 public class Applicant {
 
     @Id
