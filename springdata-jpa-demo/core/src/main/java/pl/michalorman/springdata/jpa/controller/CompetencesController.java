@@ -21,26 +21,22 @@ public class CompetencesController {
     private CompetencesRepository competencesRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    private List<Competence> list() {
+    private @ResponseBody List<Competence> list() {
         return competencesRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, params = "size")
-    @ResponseBody
-    private List<Competence> list(Integer size, Integer page) {
+    private @ResponseBody List<Competence> list(Integer size, Integer page) {
         return competencesRepository.findAll(new PageRequest(page, size)).getContent();
     }
 
     @RequestMapping(method = RequestMethod.GET, params = "name")
-    @ResponseBody
-    private List<Competence> list(String name) {
+    private @ResponseBody List<Competence> list(String name) {
         return competencesRepository.findByNameLike(name.replace('*', '%'));
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    private Competence create(Competence competence) {
+    private @ResponseBody Competence create(Competence competence) {
         return competencesRepository.save(competence);
     }
 
