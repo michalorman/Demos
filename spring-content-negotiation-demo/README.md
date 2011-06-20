@@ -10,6 +10,8 @@ Tomcat 6 container:
 
     $ mvn jetty:run
 
+or:
+
     $ mvn tomcat:run
 
 To get content in JSON run:
